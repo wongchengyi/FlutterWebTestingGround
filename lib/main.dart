@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Firebase testing',
         theme: ThemeData(
-          primarySwatch: Colors.red,
+          primarySwatch: Colors.blue,
         ),
         home: MyHomePage(title: 'Flutter Firebase Testing Ground'));
   }
@@ -332,4 +332,5 @@ class fetchingDataState extends State<fetchingData> {
         ));
   }
 }
+
 //https://protocoderspoint.com/failed-to-load-network-image-flutter-web/
