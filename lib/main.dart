@@ -59,12 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
         //color: Colors.lightGreenAccent,
 
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             //show data fetched
             Row(
               children: [
+                //a stream and future builder is being used
                 Container(
                   height: size.height * 0.3,
                   width: size.width * 0.3,
@@ -130,6 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: SizedBox(
                             height: size.height * 0.1,
                             width: size.width * 0.1,
+                            //changing the snapshot.data to a string so that it can be passed into the Image.network function
+                            //so that the image.network would be able to recognize it as a link then retreive image from it
                             child: Image.network(snapshot.data.toString())),
                       );
                     })
@@ -161,7 +162,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     child: Text('show image'),
                   )
-                  //onPressed: _addImages, child: Text('Show Image'))
                 ],
               ),
             ),
@@ -265,14 +265,7 @@ class fetchingDataState extends State<fetchingData> {
               onChanged: (value) {
                 refDeletedID = value;
               },
-              /*validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'please enter text';
-                }
-                return null;
-              },*/
             ),
-            //SizedBox(height: size.height * 0.1),
             Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -291,10 +284,6 @@ class fetchingDataState extends State<fetchingData> {
                             print('the reference id is $deletedID');
                           }).catchError(
                               (error) => print('error occured: $error'));
-
-                          /*AlertDialog(
-                            title: Text('This is your reference ID $deletedID'),
-                          );*/
                         }
                       },
                       child: Text('Upload data')),
@@ -318,10 +307,7 @@ class fetchingDataState extends State<fetchingData> {
                       onPressed: () {
                         FirebaseFirestore.instance
                             .collection('users')
-                            //insert document ID to delete
                             .doc(refDeletedID)
-                            //.doc('qCRhgAwbUoyVToYpgOOK')
-                            //.doc(deletedID)
                             .delete();
                       },
                       child: Text('Delete data')),
@@ -332,5 +318,6 @@ class fetchingDataState extends State<fetchingData> {
         ));
   }
 }
-
+//LOAD METHOD
+//flutter run -d chrome --web-renderer html
 //https://protocoderspoint.com/failed-to-load-network-image-flutter-web/
